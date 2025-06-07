@@ -1,0 +1,34 @@
+{
+  "name": "query-tool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "kill:dev": "powershell -Command \"$ports = @(3001, 5173); foreach ($port in $ports) { $proc = Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -First 1; if ($proc) { Get-Process -Id $proc -ErrorAction SilentlyContinue | Stop-Process -Force } }\"",
+    "kill:prod": "powershell -Command \"$ports = @(3001, 4173); foreach ($port in $ports) { $proc = Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -First 1; if ($proc) { Get-Process -Id $proc -ErrorAction SilentlyContinue | Stop-Process -Force } }\"",
+    "dev:sync": "node services/node-sync/index.js",
+    "dev:ui": "vite --config services/ui/vite.config.js",
+    "dev": "echo UI display port: 5173; npm run kill:dev && powershell -Command \"Start-Sleep -Seconds 2\" && concurrently \"npm run dev:sync\" \"npm run dev:ui\"", 
+    "build:ui": "vite build --config services/ui/vite.config.js",
+    "build": "echo UI display port: 4173; npm run build:ui && npm run kill:prod && powershell -Command \"Start-Sleep -Seconds 2\" && concurrently \"node services/node-sync/index.js\" \"vite preview --config services/ui/vite.config.js --port 4173\"", 
+    "start": "echo UI display port: 4173; npm run kill:dev && npm run kill:prod && (if (Test-Path ./services/ui/dist/index.html) { concurrently \"node services/node-sync/index.js\" \"vite preview --config services/ui/vite.config.js --port 4173\" } else { concurrently \"npm run dev:sync\" \"npm run dev:ui\" })"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^5.0.0",
+    "odbc": "^2.4.1",
+    "sqlite3": "^5.1.6",
+    "mdb-reader": "^3.1.0",
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^8.2.0"
+  }
+}

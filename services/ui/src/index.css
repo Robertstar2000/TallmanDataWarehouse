@@ -1,0 +1,699 @@
+/* Base Layout */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Layout */
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  gap: 1rem;
+}
+
+/* Header */
+.app-header {
+  background: #4a90e2;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1 / span 2;
+}
+.header-buttons button {
+  margin-left: 0.5rem;
+  background: #fff;
+  color: #4a90e2;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.header-buttons button:hover {
+  background: #e6f0fa;
+}
+
+/* Health status */
+.health-status {
+  background: #dff0d8;
+  color: #3c763d;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Loading and error messages */
+.loading {
+  color: #31708f;
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* Database select */
+.db-select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.db-select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Test Connections Panel */
+.test-connections-panel {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e3f2fd;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #90caf9;
+  border-radius: 4px;
+}
+
+/* Help Button */
+.help-btn {
+  background: #42a5f5;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.help-btn:hover { background: #1e88e5; }
+
+/* Sidebar connections */
+.app-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  width: 100vw;
+  background: #f4f7fa;
+}
+
+.connections-panel {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #ffffff;
+  border-right: 2px solid #90caf9;
+  min-width: 260px;
+  max-width: 400px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.main-content {
+  grid-row: 1;
+  grid-column: 2;
+  padding: 2rem 2rem 2rem 2rem;
+  overflow-y: auto;
+  min-width: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  background: #f4f7fa;
+}
+
+.connections-panel > .help-btn,
+.connections-panel > .download-btn {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+.connections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.conn-btn {
+  background: #bbdefb;
+  color: #0d47a1;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+}
+.conn-btn:hover { background: #90caf9; }
+.conn-btn.selected { background: #42a5f5; color: #fff; }
+
+/* Lists */
+.scrolling-list-container {
+  margin: 1rem 0;
+}
+.scrolling-list {
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9fbe7;
+}
+.table-item, .column-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+.placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* Main content */
+.content {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 1rem;
+  background: #fafafa;
+  overflow-y: auto;
+}
+.scroll-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Sync table */
+.sync-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+.sync-table th, .sync-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+.sync-table th {
+  background: #c8e6c9;
+}
+
+/* Buttons */
+button {
+  transition: background 0.2s;
+}
+
+/* Adjust footer */
+.content-footer {
+  grid-column: 1 / span 2;
+  padding: 0.5rem 1rem;
+  background: #e8f5e9;
+  border-top: 2px solid #a5d6a7;
+}
+
+/* Status Colors */
+.status-badge.connected {
+  background-color: #e8f5e9;
+  border-color: #c8e6c9;
+}
+
+.status-badge.connected::before {
+  background-color: #43a047;
+}
+
+.status-badge.connected .conn-name {
+  color: #2e7d32;
+}
+
+.status-badge.connected:hover {
+  background-color: #e0f2e1;
+}
+
+.status-badge.disconnected {
+  background-color: #ffebee;
+  border-color: #ffcdd2;
+  opacity: 0.8;
+}
+
+.status-badge.disconnected::before {
+  background-color: #e53935;
+}
+
+.status-badge.disconnected .conn-name {
+  color: #c62828;
+}
+
+.status-badge.disconnected:hover {
+  opacity: 1;
+  background-color: #ffebee;
+}
+
+.status-badge.testing {
+  background-color: #fff8e1;
+  border-color: #ffecb3;
+  animation: pulse-bg 2s infinite;
+}
+
+.status-badge.testing::before {
+  background-color: #ffa000;
+}
+
+.status-badge.testing .conn-name {
+  color: #e65100;
+}
+
+.status-badge.error {
+  background-color: #fce4ec;
+  border-color: #f8bbd0;
+  animation: shake 0.5s ease-in-out;
+}
+
+.status-badge.error::before {
+  background-color: #d81b60;
+}
+
+.status-badge.error .conn-name {
+  color: #ad1457;
+}
+
+.status-badge.active {
+  background-color: #e3f2fd;
+  border-color: #bbdefb;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.status-badge.active::before {
+  background-color: #1976d2;
+}
+
+.status-badge.active .conn-name {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+/* Tooltip */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #2c3e50;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  border: 5px solid transparent;
+  border-top-color: #2c3e50;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 101;
+  pointer-events: none;
+}
+
+[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Animations */
+@keyframes pulse-bg {
+  0% { opacity: 0.9; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .connection-selector {
+    padding: 1rem;
+  }
+  
+  .status-badges {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .refresh-btn span {
+    display: none;
+  }
+  
+  .refresh-btn i {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .connection-selector {
+    padding: 1rem;
+  }
+  
+  .status-badges {
+    justify-content: center;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Sync Status Banner */
+.sync-status {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ffeeba;
+}
+
+/* Footer */
+.excel-connect {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+}
+.excel-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.download-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #218838;
+}
+
+.odbc-help-btn {
+  background: #007bff; /* A distinct blue */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Match other sidebar buttons */
+  margin: 0.5rem 0; /* Match other sidebar buttons */
+}
+
+.odbc-help-btn:hover {
+  background: #0056b3;
+}
+
+.column-name-null-or-blank {
+  color: red;
+}
+.dsn-pre {
+  background: #f7f7f7;
+  padding: 0.5rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Modal Styles */
+
+.help-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content */
+}
+
+.help-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 70%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative; /* For close button positioning */
+}
+
+.help-modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.help-modal-close-btn:hover {
+  color: #333;
+}
+
+/* Styles for ReactMarkdown content inside the help modal */
+.help-modal-content h1, 
+.help-modal-content h2, 
+.help-modal-content h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  color: #333;
+}
+
+.help-modal-content h1 {
+  font-size: 1.8em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.help-modal-content h2 {
+  font-size: 1.5em;
+}
+
+.help-modal-content h3 {
+  font-size: 1.2em;
+}
+
+.help-modal-content p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+.help-modal-content ul,
+.help-modal-content ol {
+  margin-bottom: 1em;
+  padding-left: 2em;
+}
+
+.help-modal-content code {
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.help-modal-content pre {
+  background-color: #f5f5f5;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.help-modal-content pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+.help-modal-content blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 1em;
+  color: #666;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.help-modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.help-modal-content th,
+.help-modal-content td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.help-modal-content th {
+  background-color: #f9f9f9;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.help-content {
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+/* Modal */
+.modal-content h2 {
+  margin-top: 0;
+}
+.modal-content button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.modal-content button:hover {
+  background: #357ab8;
+}
+
+/* Error Boundary */
+.error-boundary {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.error-boundary h2 {
+  color: #e53e3e;
+  margin-bottom: 1rem;
+}
+
+.error-boundary button {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.error-boundary button:hover {
+  background-color: #3182ce;
+}
+
+.error-boundary pre {
+  text-align: left;
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+}

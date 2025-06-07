@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+services/node-sync/logs/
+
+# Environment
+.env
+services/node-sync/.env
+
+# Database
+*.db
+services/node-sync/dev.db
+
+# UI build artifacts
+dist/
+services/ui/dist/
+
+# Lockfiles
+package-lock.json
+services/node-sync/package-lock.json
+services/ui/package-lock.json
+
+# Prisma schema (no longer used)
+services/node-sync/prisma/
+
+# Ignore service-level dependencies
+services/node-sync/node_modules/
+services/ui/node_modules/
+
+# OS files
+Thumbs.db
+.DS_Store
